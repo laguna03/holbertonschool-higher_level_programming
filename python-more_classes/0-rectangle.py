@@ -2,5 +2,5 @@
 
 '''Module for rectangle'''
 
-class rectangle:
+class Rectangle:
     pass
