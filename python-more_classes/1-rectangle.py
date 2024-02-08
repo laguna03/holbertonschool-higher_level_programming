@@ -9,7 +9,7 @@ __width = None
 class Rectangle:
     """Define rectangle class"""
 
-    def __init__(self, width=0, height=0):
+    def __init__(self, width, height):
         """init function"""
         if type(height) is not int:
             raise TypeError("height must be an integer")
