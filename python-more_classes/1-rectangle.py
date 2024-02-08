@@ -5,6 +5,7 @@ Module for rectangle
 __width = None
 __height = None
 
+
 class Rectangle:
     '''Define a rectangle class'''
 
@@ -22,6 +23,7 @@ class Rectangle:
                 raise TypeError('Heght must be >= 0')
             else:
                 self.height = height
+
     @property
     def width(self):
         return self.__width
@@ -34,7 +36,7 @@ class Rectangle:
     def width(self, value):
         if type(value) is not int:
             raise TypeError('Width value must be an integer')
-        elif value <0:
+        elif value < 0:
             raise ValueError('Width must be >= 0')
         else:
             self.__width = value
