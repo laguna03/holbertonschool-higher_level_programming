@@ -11,7 +11,7 @@ class Rectangle:
 
     def __init__(self, height=0, width=0):
         '''init function'''
-        if type (height) is not int:
+        if type(height) is not int:
             raise TypeError('height must be an integer')
         elif height < 0:
             raise TypeError('height must be >= 0')
