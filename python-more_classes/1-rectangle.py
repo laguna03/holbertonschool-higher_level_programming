@@ -11,14 +11,14 @@ class Rectangle:
 
     def __init__(self, height=0, width=0):
         '''init function'''
-        if not isinstance(height, int):
+        if type (height) is not int:
             raise TypeError('height must be an integer')
         elif height < 0:
             raise TypeError('height must be >= 0')
         else:
             self.height = height
 
-            if not isinstance(width, int):
+            if type(width) is not int:
                 raise TypeError('width ,ust be an integer')
             elif width < 0:
                 raise TypeError('width must be >= 0')
