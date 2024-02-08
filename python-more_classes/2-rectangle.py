@@ -2,8 +2,6 @@
 """
 Module Rectangle
 """
-__height = None
-__width = None
 
 
 class Rectangle:
