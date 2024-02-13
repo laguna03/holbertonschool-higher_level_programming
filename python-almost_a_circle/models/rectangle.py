@@ -4,6 +4,12 @@
 
 from models.base import Base
 
+__width = None
+__height = None
+__x = None
+__y = None
+__id = None
+
 
 class Rectangle:
     """ Rectangle class that inherits from Base"""
