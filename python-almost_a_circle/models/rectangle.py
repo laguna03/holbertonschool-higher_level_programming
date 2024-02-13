@@ -95,4 +95,35 @@ class Rectangle:
             """ Returns the area value of the Rectangle instance """
             return self.__width * self.__height
 
-    
+    def display(self):
+
+        """ Prints in stdout the Rectangle instance with the character # """
+        for i in range(self.__y):
+            print()
+        for i in range(self.__height):
+            print(" " * self.__x + "#" * self.__width)
+
+    def __str__(self):
+
+            """ Returns the string representation of the Rectangle instance """
+            return "[Rectangle] ({}) {}/{} - {}/{}".format(
+                self.id, self.__x, self.__y, self.__width, self.__height)
+
+    def update(self, *args, **kwargs):
+
+        """ Assigns an argument to each attribute """
+        if args:
+            for i in range(len(args)):
+                if i == 0:
+                    self.id = args[i]
+                elif i == 1:
+                    self.__width = args[i]
+                elif i == 2:
+                    self.__height = args[i]
+                elif i == 3:
+                    self.__x = args[i]
+                elif i == 4:
+                    self.__y = args[i]
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
