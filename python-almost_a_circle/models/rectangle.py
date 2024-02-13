@@ -1,11 +1,13 @@
 #!/usr/usr/bin/python3
 """ Rectangle class that inherits from Base"""
 
-from models.base import Base
 
+from models.base import Base
 
 class Rectangle:
     """ Rectangle class that inherits from Base"""
+
+
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """ Initialize the Rectangle class """
@@ -83,9 +85,5 @@ class Rectangle:
                 raise TypeError("y must be an int")
             elif value < 0:
                 raise ValueError("y must be => 0")
-
-
-        def area(self):
-            """Returns the area value of rectangle instance"""
-
-            return self.__width * self.__height
+            else:
+                self.__y = value
