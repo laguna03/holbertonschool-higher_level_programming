@@ -1,4 +1,4 @@
-#!/usr/usr/bin/python3
+#!/usr/bin/python3
 """ Rectangle class that inherits from Base"""
 
 from models.base import Base
