@@ -8,6 +8,7 @@ __x = None
 __y = None
 id = None
 
+
 class Rectangle:
     """ Rectangle class that inherits from Base"""
 
