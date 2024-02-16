@@ -95,10 +95,9 @@ class Rectangle:
             """ Method that returns the area of the Rectangle """
             return self.__width * self.__height
 
-    def display(self):
+    def perimeter(self):
 
-        """ Method that prints the Rectangle with the character # """
-        for i in range(self.__y):
-            print()
-        for i in range(self.__height):
-            print(" " * self.__x + "#" * self.__width)
+            """ Method that returns the perimeter of the Rectangle """
+            if self.__width == 0 or self.__height == 0:
+                return 0
+            return (self.__width * 2) + (self.__height * 2)
