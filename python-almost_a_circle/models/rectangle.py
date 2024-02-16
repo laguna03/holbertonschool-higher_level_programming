@@ -75,3 +75,11 @@ class Rectangle:
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
+
+    def area(self):
+        """ Return the area of the rectangle """
+        return self.__width * self.__height
+
+    def perimeter(self):
+        """ Return the perimeter of the rectangle """
+        return 2 * (self.__width + self.__height)
