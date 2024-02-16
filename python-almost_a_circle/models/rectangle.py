@@ -1,14 +1,7 @@
 #!/usr/usr/bin/python3
 """ Rectangle class that inherits from Base"""
 
-
 from models.base import Base
-
-__width = None
-__height = None
-__x = None
-__y = None
-__id = None
 
 
 class Rectangle:
@@ -16,15 +9,16 @@ class Rectangle:
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """ Initialize the Rectangle class """
-        self.width = width
-        self.height = height
-        self.x = x
-        self.y = y
+
+        self.__width = width
+        self.__height = height
+        self.__x = x
+        self.__y = y
         if id is None:
             self.id = Base().id
         else:
             self.id = id
-            Base().id += 1
+            Base().id = id
 
     @property
     def width(self):
@@ -95,13 +89,4 @@ class Rectangle:
             if value < 0:
                 raise ValueError("y must be >= 0")
             self.__y = value
-
-    def area(self):
-
-            """ Returns the area value of the Rectangle instance """
-            return self.__width * self.__height
-
-    def perimeter(self):
-
-            """ Returns the perimeter value of the Rectangle instance """
-            return (self.__width * 2) + (self.__height * 2)
+4
