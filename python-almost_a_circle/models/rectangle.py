@@ -26,7 +26,6 @@ class Rectangle:
         return self.__width
 
     @width.setter
-
     def width(self, value):
         """ Setter for width """
         if not isinstance(value, int):
@@ -36,13 +35,11 @@ class Rectangle:
         self.__width = value
 
     @property
-
     def height(self):
         """ Getter for height """
         return self.__height
 
     @height.setter
-
     def height(self, value):
         """ Setter for height """
         if not isinstance(value, int):
@@ -52,13 +49,11 @@ class Rectangle:
         self.__height = value
 
     @property
-
     def x(self):
         """ Getter for x """
         return self.__x
 
     @x.setter
-
     def x(self, value):
         """ Setter for x """
         if not isinstance(value, int):
@@ -68,13 +63,11 @@ class Rectangle:
         self.__x = value
 
     @property
-
     def y(self):
         """ Getter for y """
         return self.__y
 
     @y.setter
-
     def y(self, value):
         """ Setter for y """
         if not isinstance(value, int):
