@@ -128,14 +128,6 @@ class Rectangle(Base):
                     self.__y = v
 
     def to_dictionary(self):
-        """
-        Returns a dictionary representation
-        """
-        collage = {
-            "x": {self.x},
-            "y": {self.y},
-            "id": {self.id},
-            "width": {self.width},
-            "height": {self.height}
-        }
-        return collage
+        """Returns the dictionary representation of the Rectangle"""
+        return {'id': self.id, 'width': self.__width, 'height': self.__height,
+                'x': self.__x, 'y': self.__y}
