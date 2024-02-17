@@ -1,75 +1,87 @@
-#!/usr/bin/python3
-
-""" unittest for Rectangle([..]) """
-
 import unittest
 from models.rectangle import Rectangle
+class Test_Base(unittest.TestCase):
 
+    def test_str_(self):
+        self.assertEqual(Rectangle(2, 2, 0, 0, 20).__str__(), "[Rectangle] (20) 0/0 - 2/2")
 
-class Test_rectangle(unittest.TestCase):
-    """Unitests for Rectangle"""
+    def test_check_position(self):
+        r2 = Rectangle(4, 2, 0, 0, 20)
+        self.assertEqual(r2.x, 0)
+        self.assertNotEqual(r2.y, 1)
 
-    def test_empty(self):
-        r1 = Rectangle(10, 2)
-        self.assertEqual(r1.id, 1)
+    def test_creates(self):
+        r1 = Rectangle(10,2)
+        self.assertEqual(r1.width, 10)
+        self.assertEqual(r1.height, 2)
+        r2 = Rectangle(4, 2, 0, 0, 20)
+        self.assertEqual(r2.id, 20)
 
-    def test_multiple_instances(self):
-        r2 = Rectangle(2, 10)
-        self.assertEqual(r2.id, 2)
-        r3 = Rectangle(10, 2, 0, 0, 12)
-        self.assertEqual(r3.id, 12)
-
-    def test_set_id(self):
-        r4 = Rectangle(89, 1)
-        self.assertEqual(r4.id, 89)
-
-    def test_set_width(self):
-        r5 = Rectangle(10, 2)
-        self.assertEqual(r5.width, 10)
-
-    def test_set_height(self):
-        r6 = Rectangle(10, 2)
-        self.assertEqual(r6.height, 2)
-
-    def test_set_x(self):
-        r7 = Rectangle(10, 2, 0, 0, 12)
-        self.assertEqual(r7.x, 0)
-
-    def test_set_y(self):
-        r8 = Rectangle(10, 2, 0, 0, 12)
-        self.assertEqual(r8.y, 0)
-
-    def test_set_width_type(self):
+    def test_raise_type_error(self):
         with self.assertRaises(TypeError):
-            r9 = Rectangle("10", 2)
-
-    def test_set_height_type(self):
+            Rectangle(4, "b")
         with self.assertRaises(TypeError):
-            r10 = Rectangle(10, "2")
-
-    def test_set_x_type(self):
+            Rectangle("b", 2)
         with self.assertRaises(TypeError):
-            r11 = Rectangle(10, 2, "0", 0, 12)
-
-    def test_set_y_type(self):
+            Rectangle(4, 2, "a", 0, 20)
         with self.assertRaises(TypeError):
-            r12 = Rectangle(10, 2, 0, "0", 12)
+            Rectangle(4, 2, 0, "b", 20)
+        with self.assertRaises(TypeError):
+            Rectangle()
 
-    def test_set_width_value(self):
+    def test_raise_value_error(self):
         with self.assertRaises(ValueError):
-            r13 = Rectangle(-10, 2)
-
-    def test_set_height_value(self):
+            Rectangle(0, 2, 0, 0, 20)
         with self.assertRaises(ValueError):
-            r14 = Rectangle(10, -2)
-
-    def test_set_x_value(self):
+            Rectangle(4, 0, 0, 0, 20)
         with self.assertRaises(ValueError):
-            r15 = Rectangle(10, 2, -1, 0, 12)
-
-    def test_set_y_value(self):
+            Rectangle(-4, 2, 0, 0, 20)
         with self.assertRaises(ValueError):
-            r16 = Rectangle(10, 2, 0, -1, 12)
+            Rectangle(4, -2, 0, 0, 20)
+        with self.assertRaises(ValueError):
+            Rectangle(4, 2, -2, 0, 20)
+        with self.assertRaises(ValueError):
+            Rectangle(4, 3, 0, -2, 20)
 
     def test_area(self):
-        r17 = Rectangle(10)
+        r1 = Rectangle(3, 2)
+        self.assertEqual(r1.area(), 6)
+
+    def test_display(self):
+        with self.assertRaises(TypeError):
+            Rectangle(2, 4, None).display()
+        with self.assertRaises(TypeError):
+            Rectangle.display()
+        r2 = Rectangle(2, 4)
+        self.assertEqual(r2.display(), 0)
+        self.assertEqual(Rectangle(5, 4, 40).display(), 0)
+
+
+    def test_to_dictionary(self):
+        r1 = Rectangle(10, 2, 0, 0, 20)
+        r1_dictionary = r1.to_dictionary()
+        self.assertEqual(r1_dictionary, {'height': 2, 'id': 20, 'width': 10, 'x': 0, 'y': 0})
+
+    def test_str(self):
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        print(r1)
+
+    def test_update(self):
+        r1 = Rectangle(5, 5, 5, 5, 5)
+        r1.update(89, 2, 3, 4, 6)
+        self.assertEqual(r1.id, 89)
+        r1.update(x=1, height=2, y=3, width=4)
+        self.assertEqual(r1.x, 1)
+
+    def test_load_from_file_r(self):
+        Rectangle.load_from_file()
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+        Rectangle.save_to_file(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file()
+
+    def test_save_to_file_r(self):
+        self.assertEqual(Rectangle.save_to_file(None), 0)
+        self.assertEqual(Rectangle.save_to_file([]), 0)
+        Rectangle.save_to_file([Rectangle(4, 6, 0, 0, 10)])
