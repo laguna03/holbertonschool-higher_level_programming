@@ -1,4 +1,5 @@
-#!/usr/bin/pyhton3
+#!/usr/bin/python3
+
 """Filter states with letter N"""
 
 import MySQLdb as sql
