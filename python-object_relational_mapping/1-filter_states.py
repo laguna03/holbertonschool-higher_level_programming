@@ -1,7 +1,5 @@
 #!/usr/bin/pyhton3
-'''
-Filter states with letter N
-'''
+"""Filter states with letter N"""
 
 import MySQLdb as sql
 from sys import argv
