@@ -1,30 +1,22 @@
 #!/usr/bin/python3
-
 """
-This script lists all cities of a state given as parameter
+takes in the name of a state as an argument
+and lists all cities of that state
 """
 
 
+import MySQLdb as sql
+from sys import argv
 if __name__ == '__main__':
-    import MySQLdb
-    import sys
-
-    username, password, database_name, state_name = sys.argv[1:]
-
-    db = MySQLdb.connect(host='localhost', user=username,
-                         passwd=password, db=database_name)
+    db = sql.connect(host="localhost",
+                     port=3306, user=argv[1], passwd=argv[2], db=argv[3])
     cur = db.cursor()
-
-    cur.execute("""
-        SELECT cities.name
-        FROM cities
-        LEFT JOIN states
-        ON cities.state_id = states.id
-        WHERE states.name LIKE BINARY %s
-        ORDER BY cities.id
-    """, (state_name,))
-
+    query = "SELECT cities.name FROM cities JOIN states ON\
+    cities.state_id = states.id WHERE states.name = %s"
+    cur.execute(query, (argv[4],))
     rows = cur.fetchall()
-    data = [elem for row in rows for elem in row]
-
-    print(*data, sep=', ')
+    cities_array = [row[0] for row in rows]
+    cities_string = ", ".join(cities_array)
+    print(cities_string)
+    cur.close()
+    db.close()
